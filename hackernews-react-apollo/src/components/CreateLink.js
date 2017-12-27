@@ -39,8 +39,8 @@ class CreateLink extends Component {
     }
 
     _createLink = async () => {
-        const postedBy = localStorage.getItem(GC_USER_ID)
-        if (!postedBy) {
+        const postedById = localStorage.getItem(GC_USER_ID)
+        if (!postedById) {
             console.error('No user logged in')
             return
         }
@@ -49,7 +49,7 @@ class CreateLink extends Component {
             variables: {
                 description,
                 url,
-                postedBy
+                postedById
             }
         })
         this.props.history.push('/')
@@ -58,11 +58,11 @@ class CreateLink extends Component {
 }
 
 const CREATE_LINK_MUTATION = gql`
-    mutation CreateLinkMutation($description: String!, $url: String!, $postedBy: ID!) {
+    mutation CreateLinkMutation($description: String!, $url: String!, $postedById: ID!) {
         createLink(
             description: $description,
             url: $url,
-            postedBy: $postedBy
+            postedById: $postedById
         ) {
             id
             createdAt

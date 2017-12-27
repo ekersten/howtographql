@@ -70,7 +70,7 @@ async function getUser(api: GraphQLClient, email: string): Promise<{ User }> {
 
 async function createGraphcoolUser(api: GraphQLClient, email: string, password: string, name: string): Promise<string> {
   const mutation = `
-    mutation createGraphcoolUser($email: String!, $password: String!) {
+    mutation createGraphcoolUser($email: String!, $password: String!, $name: String!) {
       createUser(
         email: $email,
         password: $password
